@@ -17,7 +17,7 @@ class ProductService:
             ProductResponse.model_validate(prod) for prod in products]
         return ProductListResponse(products=products_response, total=len(products_response))
 
-    def get_category_by_id(self, product_id: int) -> ProductResponse:
+    def get_product_by_id(self, product_id: int) -> ProductResponse:
         product = self.repository.get_by_id(product_id)
         if not product:
             raise HTTPException(

@@ -33,3 +33,19 @@ class CartResponse(BaseModel):
     total: float = Field(..., description='Total cart price')
     items_count: int = Field(...,
                              description='Total number of items in the cart')
+
+
+class AddToCartRequest(BaseModel):
+    product_id: int
+    quantity: int
+    cart: dict[int, int] = {}
+
+
+class UpdateCartRequest(BaseModel):
+    product_id: int
+    quantity: int
+    cart: dict[int, int] = {}
+
+
+class RemoveFromCartRequest(BaseModel):
+    cart: dict[int, int] = {}
