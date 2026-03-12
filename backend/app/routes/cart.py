@@ -7,7 +7,7 @@ from ..schemas.cart import CartItem, CartItemCreate, CartItemUpdate, AddToCartRe
 from pydantic import BaseModel
 
 router = APIRouter(
-    prefix='api/cart',
+    prefix='/api/cart',
     tags=['cart']
 )
 
@@ -32,7 +32,7 @@ def update_cart_item(request: UpdateCartRequest, db: Session = Depends(get_db)):
     service = CartService(db)
     item = CartItemUpdate(product_id=request.product_id,
                           quantity=request.quantity)
-    update_cart = service.update_cart_item(request.catr, item)
+    update_cart = service.update_cart_item(request.cart, item)
     return {'cart': update_cart}
 
 
